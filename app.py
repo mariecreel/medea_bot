@@ -27,4 +27,4 @@ while True != False:
     print("tweeting")
   except tweepy.TweepError , err:
     print(err)
-  sleep(212000)
+  sleep(3600)
