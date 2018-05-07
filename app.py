@@ -11,19 +11,17 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 api = tweepy.API(auth)
-
+linenumbs = len(open('content.txt', 'r').readlines())
 filename=open('content.txt', 'r')
-read_some_text = filename.readlines()
-length_read_some_text = len(open('content.txt', 'r').readlines())
+lines = filename.readlines()
 filename.close()
 
-#for i in range(0,3):
-  #random_tweet = random_line + random_tweet
-  #add all three lines together in one tweet, separated by new line?? not quite there
 while True != False:
   try:
-    random_line = read_some_text[randint(0,length_read_some_text)]
-    api.update_status(random_line)
+    randomline1 = lines[randint(0, linenumbs)]
+    randomline2 = lines[randint(0, linenumbs)]
+    tweet = randomline1[0:len(randomline1)/2] + randomline2[len(randomline1)/2:len(randomline2)]
+    api.update_status(tweet)
     print("tweeting")
   except tweepy.TweepError , err:
     print(err)
