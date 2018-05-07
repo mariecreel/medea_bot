@@ -20,7 +20,7 @@ while True != False:
   try:
     randomline1 = lines[randint(0, linenumbs)]
     randomline2 = lines[randint(0, linenumbs)]
-    tweet = randomline1[0:len(randomline1)/2] + randomline2[len(randomline1)/2:len(randomline2)]
+    tweet = randomline1[0:len(randomline1)/2] + ' ' + randomline2[len(randomline1)/2:len(randomline2)]
     api.update_status(tweet)
     print("tweeting")
   except tweepy.TweepError , err:
