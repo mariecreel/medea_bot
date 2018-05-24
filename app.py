@@ -18,10 +18,13 @@ filename.close()
 
 while True != False:
   try:
-    randomline1 = lines[randint(0, linenumbs)]
-    randomline2 = lines[randint(0, linenumbs)]
-    tweet = randomline1[0:len(randomline1)/2] + ' ' + randomline2[len(randomline1)/2:len(randomline2)]
-    api.update_status(tweet)
+    randomline1 = lines[randint(0, linenumbs)] #chooses a random line in content.txt
+    randomline2 = lines[randint(0, linenumbs)] #chooses another random line in context.txt
+    line1split = randomline1.split(" ") #splits randomline1 at each space, creates a list
+    line2split = randomline2.split(" ") #splits randomline2 at each space, creates a list
+    tweet = line1split[0:len(line1split)/2] + line2split[len(line1split)/2:len(line2split)]
+    #tweet = the first half of the first line plus the second half of the second line, new list
+    api.update_status(' '.join(tweet)) #contents of tweet are joined with a space
     print("tweeting")
   except tweepy.TweepError , err:
     print(err)
